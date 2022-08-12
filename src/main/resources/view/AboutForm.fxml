@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="aboutForm" prefHeight="271.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutFormController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="185.0" layoutX="41.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="410.0" AnchorPane.topAnchor="74.0">
+         <image>
+            <Image url="@../image/loader.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="229.0" layoutY="99.0" text="BLUE DISK TEXT EDITOR">
+         <font>
+            <Font name="Noto Sans CJK JP" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="356.0" layoutY="143.0" text="V 1.0.0">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="253.0" layoutY="177.0" text="Copyright © 2022 DEP. All Right Reserved  " />
+   </children>
+</AnchorPane>
