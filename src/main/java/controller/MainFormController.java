@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.Clipboard;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -14,6 +15,7 @@ import org.w3c.dom.html.HTMLBodyElement;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainFormController {
@@ -43,21 +45,20 @@ public class MainFormController {
         fileChooser.setInitialDirectory(new File("/home/nipunperera/Desktop")); //Set initial directory as Desktop
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("all files (*.*)","*.*")); // set extensions as txt
 
-        srcFile = fileChooser.showOpenDialog(txtEditor.getScene().getWindow()); // get the memory location of 
+        srcFile = fileChooser.showOpenDialog(txtEditor.getScene().getWindow()); // get the memory location of
 
         FileInputStream fis = new FileInputStream(srcFile);
-        int [] readings = new int[(int) srcFile.length()];
-        for(int i=0; i< srcFile.length();i++){
-            int read = fis.read();
-            readings[i] = read;
-        }
-        StringBuilder stringBuilder = new StringBuilder("");
-        for(int eachByte : readings){
-            stringBuilder.append((char)eachByte);
-        }
+        BufferedInputStream bis = new BufferedInputStream(fis);
 
-        txtEditor.setHtmlText(String.valueOf(stringBuilder));
-        fis.close();
+        byte[] buffer = new byte[1024*1];
+        while(true){
+            int read = bis.read(buffer); // total bytes 1024 not summation
+            System.out.println(read);
+            if(read == -1){
+                break;
+            }
+        }
+        bis.close();
     }
 
     public void mnuSaveOnAction(ActionEvent actionEvent) throws IOException {
@@ -89,6 +90,9 @@ public class MainFormController {
     }
 
     public void mnuCopyOnAction(ActionEvent actionEvent) {
+        Clipboard systemClipboard = Clipboard.getSystemClipboard();
+
+
     }
 
     public void mnuPasteOnAction(ActionEvent actionEvent) {
